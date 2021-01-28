@@ -12,24 +12,24 @@ import Village from '../Village/Village.component.js';
 import VillageForm from '../Village/VillageForm.js';
 import Schools from '../School/Schools.component.js';
 import SchoolForm from '../School/SchoolForm.js';
-import HeadmasterProfile from './HeadmasterProfile/Profile.js';
-import ProfileForm from './HeadmasterProfile/ProfileForm.js';
+import MentorProfile from './MentorProfile';
+// import ProfileForm from './HeadmasterProfile/ProfileForm.js';
 // import HeadmasterNav from './Drawer';
 // import TestComponent from './TestComponent';
 import { Drawer, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
-import './HeadmasterDashboard.css';
+import './MentorDashboard.css';
 import {
   menuButton,
   menuIcon,
   menuMove,
   Dashboard,
-} from './HeadmasterDashboard.style';
+} from './MentorDashboard.style';
 import Logout from '../../Logout.js';
 // import MentorPairings from './Mentees/Mentees.js';
 import Mentees from '../Mentees/Mentees';
 
-function HeadmasterDashboard() {
+function MentorDashboard() {
   const [visible, setVisible] = useState(true);
   const [desktop, setDesktop] = useState(true);
 
@@ -62,8 +62,8 @@ function HeadmasterDashboard() {
       <Dashboard>
         <Switch>
           <Route path="/mentor-pairings" component={Mentees} />
-          <Route exact path="/profile" component={HeadmasterProfile} />
-          <Route path="/profile/edit/:id" component={ProfileForm} />
+          <Route exact path="/profile" component={MentorProfile} />
+          {/* <Route path="/profile/edit/:id" component={ProfileForm} /> */}
           <Route path="/mentor-advisor" />
           <Route path="/school-village">
             <Village />
@@ -143,4 +143,4 @@ function HeadmasterDashboard() {
 // };
 
 // export default connect(mapStateToProps, {})(HeadmasterDashboard);
-export default HeadmasterDashboard;
+export default MentorDashboard;
