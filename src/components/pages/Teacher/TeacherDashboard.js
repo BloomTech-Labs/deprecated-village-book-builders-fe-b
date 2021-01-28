@@ -11,8 +11,12 @@ const TeacherDashboard = () => {
       <h2>Hello, Teacher!!!</h2>
       <div className="teacher__dashboard__navbar">
         {/* subtracting userId from 10 just for temporary purpose */}
-        <NavLink to={`/teacher/${userId - 10}`}>Profile</NavLink>
-        <NavLink to="/logout">Logout</NavLink>
+        <NavLink to={`/teacher/${userId - 10}`}>
+          <button className="btn l2-btn menuLinks">Profile</button>
+        </NavLink>
+        <NavLink to="/logout">
+          <button className="btn l2-btn menuLinks">Logout</button>
+        </NavLink>
       </div>
     </>
   );
