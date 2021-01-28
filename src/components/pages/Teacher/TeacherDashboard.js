@@ -8,7 +8,7 @@ const TeacherDashboard = () => {
 
   return (
     <>
-      <h2>Hello, Teacher!</h2>
+      <h2>Hello, Teacher!!!</h2>
       <div className="teacher__dashboard__navbar">
         {/* subtracting userId from 10 just for temporary purpose */}
         <NavLink to={`/teacher/${userId - 10}`}>Profile</NavLink>
