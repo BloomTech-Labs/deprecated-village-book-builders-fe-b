@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import './TeacherDashboard.css';
+import { Drawer, Button } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import {
+  menuButton,
+  menuIcon,
+  menuMove,
+  Dashboard,
+} from './TeacherDashboard.style';
+import Logout from '../../Logout.js';
 
 const TeacherDashboard = () => {
   const { userId } = useSelector(state => state.authReducer);
