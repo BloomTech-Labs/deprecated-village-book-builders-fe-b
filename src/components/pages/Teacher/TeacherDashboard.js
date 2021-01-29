@@ -71,7 +71,7 @@ const TeacherDashboard = () => {
           onClose={onClose}
           visible={visible}
           mask={false}
-          width={desktop ? 300 : 500}
+          width={desktop ? 170 : 500}
           height={500}
         >
           <h2>Hello, Teacher!!!</h2>
