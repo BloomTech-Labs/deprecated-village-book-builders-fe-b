@@ -5,6 +5,7 @@ import axios from 'axios';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 //action types
+
 import * as actionTypes from './actionTypes';
 
 //env variables
@@ -73,8 +74,30 @@ export const fetchHeadmasterProfile = id => dispatch => {
     .catch(err => console.dir(err));
 };
 
-export const fetchHeadmasterSchool = () => dispatch => {
-  dispatch({ type: actionTypes.FETCH_HEADMASTER_SCHOOL });
+export const fetchHeadmasterSchool = id => dispatch => {
+  axiosWithAuth()
+    .get(`/school/${id}`)
+    .then(res => {
+      console.log('fetchHeadMasterSchool action --> ', res.data);
+      dispatch({
+        type: actionTypes.FETCH_HEADMASTER_SCHOOL,
+        payload: res.data,
+      });
+    })
+    .catch(err => console.dir(err));
+};
+// &account_status=Inactive
+export const fetchPendingTeachers = id => dispatch => {
+  axiosWithAuth()
+    .get(`/teacher?schoolId=${id}`)
+    .then(res => {
+      console.log('fetchPendingTeacher action --> ', res.data);
+      dispatch({
+        type: actionTypes.FETCH_PENDING_TEACHERS,
+        payload: res.data,
+      });
+    })
+    .catch(err => console.dir(err));
 };
 
 // -----------------------
@@ -163,11 +186,9 @@ export const editMentee = (id, data) => dispatch => {
     .then(res => {
       // ? refactor all the window.location.replace's so this doesn't force a refresh. see how login does it for example.
       // window.location.replace('/profile/');
-      console.log(res);
       dispatch({ type: actionTypes.EDIT_MENTEE_SUCCESS, payload: res });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: actionTypes.EDIT_MENTEE_FAILURE, payload: err });
     });
 };
@@ -177,11 +198,9 @@ export const addMentee = data => dispatch => {
   axiosWithAuth()
     .post('/mentee', data)
     .then(res => {
-      console.log(res);
-      dispatch({ type: actionTypes.ADD_MENTEE_SUCCESS, payload: res });
+      dispatch({ type: actionTypes.ADD_MENTEE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: actionTypes.ADD_MENTEE_FAILURE, payload: err });
     });
 };
@@ -213,19 +232,20 @@ export const addLibrary = (id, data) => dispatch => {
 // ----------------
 
 export const editTeacherProfile = (id, data) => dispatch => {
+  dispatch({ type: actionTypes.EDIT_TEACHER_START, payload: data });
   axiosWithAuth()
     .put(`/teacher/${id}`, data)
     .then(res => {
-      // ? refactor all the window.location.replace's so this doesn't force a refresh. see how login does it for example.
-      window.location.replace('/profile/');
+      dispatch({ type: actionTypes.EDIT_TEACHER_SUCCESS, payload: res.data });
     })
-    .catch(err => console.dir(err));
+    .catch(err => {
+      dispatch({ type: actionTypes.EDIT_TEACHER_FAILURE, payload: err });
+    });
 };
 export const fetchTeacherProfile = id => dispatch => {
   axiosWithAuth()
     .get(`/teacher/${id}`) // change this later
     .then(res => {
-      console.log('fetchteacherProfile action --> ', res.data);
       dispatch({
         type: actionTypes.FETCH_TEACHER_PROFILE,
         payload: res.data,
