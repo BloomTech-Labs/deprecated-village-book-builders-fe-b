@@ -11,11 +11,15 @@ import HeadmasterDashboard from './pages/Headmaster/HeadmasterDashboard';
 import TeacherDashboard from './pages/Teacher/TeacherDashboard';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ProgramDashboard from './pages/Program/ProgramDashboard';
+import TeacherProfile from './pages/Teacher/TeacherProfile/TeacherProfile';
+import TeacherProfileForm from './pages/Teacher/TeacherProfile/TeacherProfileForm';
 
 const App = ({ role, checkToken }) => {
   return (
     <div className="App">
       <Switch>
+        <Route path="/teacher/:id/edit" component={TeacherProfileForm} />
+        <Route path="/teacher/:id" component={TeacherProfile} />
         <Route path="/logout" component={Logout} />
         <Route path="/login" component={Login} />
 

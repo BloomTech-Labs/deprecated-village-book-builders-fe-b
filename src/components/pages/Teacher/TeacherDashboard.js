@@ -13,6 +13,7 @@ import {
 import TeacherProfile from './TeacherProfile/TeacherProfile';
 import TeacherProfileForm from './TeacherProfile/TeacherProfileForm';
 import Logout from '../../Logout.js';
+import { ReactComponent as Welcome } from '../../../assets/images/Welcome-Image.svg';
 
 const TeacherDashboard = () => {
   const { userId } = useSelector(state => state.authReducer);
@@ -47,9 +48,10 @@ const TeacherDashboard = () => {
     <div>
       <Dashboard>
         <Switch>
-          <Route path="/teacher" component={TeacherProfile} />
-          <Route path="/teacher/edit" component={TeacherProfileForm} />
+          <Route exact path="/teacher" component={TeacherProfile} />
+          <Route path="/teacher/edit/:id" component={TeacherProfileForm} />
           <Route path="/logout" component={Logout} />
+          <Route path="/" render={() => <Welcome />} />
         </Switch>
       </Dashboard>
 
@@ -66,7 +68,6 @@ const TeacherDashboard = () => {
           </Button>
         </div>
       )}
-
       <div>
         <Drawer
           placement={desktop ? 'left' : 'bottom'}
