@@ -10,6 +10,7 @@ import {
   menuMove,
   Dashboard,
 } from './TeacherDashboard.style';
+import TeacherProfile from './TeacherProfile/TeacherProfile';
 import Logout from '../../Logout.js';
 
 const TeacherDashboard = () => {
@@ -45,7 +46,7 @@ const TeacherDashboard = () => {
     <div>
       <Dashboard>
         <Switch>
-          <Route path="/teacher" />
+          <Route path="/teacher" component={TeacherProfile} />
           <Route path="/logout" component={Logout} />
         </Switch>
       </Dashboard>
