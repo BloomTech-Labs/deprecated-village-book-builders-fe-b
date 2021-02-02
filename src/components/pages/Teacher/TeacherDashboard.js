@@ -11,6 +11,7 @@ import {
   Dashboard,
 } from './TeacherDashboard.style';
 import TeacherProfile from './TeacherProfile/TeacherProfile';
+import TeacherProfileForm from './TeacherProfile/TeacherProfileForm';
 import Logout from '../../Logout.js';
 
 const TeacherDashboard = () => {
@@ -47,6 +48,7 @@ const TeacherDashboard = () => {
       <Dashboard>
         <Switch>
           <Route path="/teacher" component={TeacherProfile} />
+          <Route path="/teacher/edit" component={TeacherProfileForm} />
           <Route path="/logout" component={Logout} />
         </Switch>
       </Dashboard>
